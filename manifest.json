@@ -1,0 +1,12 @@
+{
+  "domain": "jomoo_sq9650",
+  "name": "JOMOO SQ9650 (Experimental)",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": ["bluetooth", "bluetooth_adapters"],
+  "documentation": "https://github.com/caokang1997/JMGatt_client",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "requirements": [],
+  "version": "0.1.0"
+}

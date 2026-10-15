@@ -1,0 +1,12 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "九牧 SQ9650 蓝牙连接",
+        "description": "输入 HA 蓝牙广播监视器中确认的马桶 BLE 地址（不要使用原仓库作者的地址）。首次添加不会主动连接设备。",
+        "data": {"address": "马桶 BLE 地址（AA:BB:CC:DD:EE:FF）"}
+      }
+    },
+    "error": {"invalid_address": "蓝牙地址格式不正确"}
+  }
+}
