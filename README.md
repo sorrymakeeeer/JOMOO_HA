@@ -1,4 +1,4 @@
-# JOMOO SQ9650 for Home Assistant — 0.1.0 验证版
+# JOMOO SQ9650 for Home Assistant — 0.1.1 验证版（统一 domain：jomoo_ha）
 
 > 未经真实 SQ9650 / 冬瓜 HAOS 测试。只供个人实验，不保证兼容或设备动作执行。不是九牧官方集成。
 
@@ -18,8 +18,10 @@
 5. 先创建完整 HA 备份；升级固件之前另行查验固件适配（本项目不需要刷机）
 
 ## 安装
-1. 解压缩文件，把 `custom_components/jomoo_sq9650` 文件夹放到 HA 的 `/config/custom_components/` 目录
-2. 重启 Home Assistant Core
+1. 下载 `jomoo_ha_ha_install_v0.1.1.zip`，解压后将其中的 `jomoo_ha/` 整个目录放进 HA 的 `/config/custom_components/`，不要增加额外父目录。
+   - 或者在 `/config/custom_components/` 直接 `git clone https://github.com/sorrymakeeeer/JOMOO_HA.git jomoo_ha`（适用于本仓库这种代码直接在根目录的结构）。
+   - **请勿**把 GitHub 自动生成的 `JOMOO_HA-main/` 或其他 ZIP 名称当成 HA 集成目录。
+2. 核对 `/config/custom_components/jomoo_ha/manifest.json` 中 `domain` 为 `jomoo_ha`，且同一目录有 `config_flow.py` 和 `const.py`；再重启 Home Assistant Core
 3. `设置 → 设备与服务 → 添加集成`，搜索 `JOMOO SQ9650 (Experimental)`
 4. 输入**你自己**马桶的 BLE 地址，格式 `AA:BB:CC:DD:EE:FF`
 5. 设备添加后先点 `查询状态`；若显示原始座温档位，再测试夜灯开/关
@@ -38,3 +40,11 @@
 ## 测试
 `python -m unittest discover -s tests -v`
 仅覆盖纯 Python 协议单元测试，不包括实机 BLE/HA 集成测试。
+
+## 命名一致性（避免 Invalid handler specified）
+- 文件夹：`/config/custom_components/jomoo_ha/`
+- `manifest.json`：`"domain": "jomoo_ha"`
+- `const.py`：`DOMAIN = "jomoo_ha"`
+- `config_flow.py` 使用 `domain=DOMAIN` 注册配置向导
+- 之前安装过其他名字的测试目录时，先备份并移走旧目录，避免两个副本同时被加载。
+- 在 HA Core 中添加新集成不会修改仓库；如果通过旧的 GitHub ZIP 重新下载，会重新引入旧的代码，所以先更新你自己的 GitHub 仓库。

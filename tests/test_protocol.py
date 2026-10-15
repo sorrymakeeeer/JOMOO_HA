@@ -3,7 +3,7 @@ import importlib.util
 import unittest
 from pathlib import Path
 
-path = Path(__file__).parents[1] / 'custom_components' / 'jomoo_sq9650' / 'protocol.py'
+path = Path(__file__).parents[1] / 'protocol.py'
 spec = importlib.util.spec_from_file_location('protocol', path)
 protocol = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(protocol)

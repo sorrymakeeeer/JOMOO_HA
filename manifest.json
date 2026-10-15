@@ -1,14 +1,17 @@
-
 {
   "domain": "jomoo_ha",
   "name": "JOMOO SQ9650 (Experimental)",
-  "version": "0.1.0",
-  "documentation": "https://github.com/sorrymakeeeer/JOMOO_HA",
-  "issue_tracker": "https://github.com/sorrymakeeeer/JOMOO_HA/issues",
-  "codeowners": ["@sorrymakeeeer"],
+  "codeowners": [
+    "@sorrymakeeeer"
+  ],
   "config_flow": true,
+  "dependencies": [
+    "bluetooth"
+  ],
+  "documentation": "https://github.com/sorrymakeeeer/JOMOO_HA",
   "integration_type": "device",
   "iot_class": "local_polling",
-  "dependencies": ["bluetooth"],
-  "requirements": []
+  "requirements": [],
+  "version": "0.1.1",
+  "issue_tracker": "https://github.com/sorrymakeeeer/JOMOO_HA/issues"
 }
